@@ -1,6 +1,7 @@
 import csv
 import re
 import logging
+import pandas as pd
 
 # Set up logging
 logging.basicConfig(filename='compare_manifest.log', level=logging.INFO, format='%(asctime)s - %(message)s')
@@ -134,6 +135,9 @@ def load_csv(filename, rules, all_sections=None):
 
 def compare_manifests(mine, client):
     differences = []
+    df = pd.DataFrame({'sg-section':[], 'sg-row':[], 'client-section':[], 'client-row':[]})
+
+    
 
     # Check if comparison is seat-level or row-level
     is_seat_level = all(isinstance(val, dict) for val in mine.values())
@@ -145,12 +149,18 @@ def compare_manifests(mine, client):
         for section in mine:
             if section not in client:
                 differences.append(f"section {section} missing in client's manifest")
+                new_row = {'sg-section':section, 'sg-row':'', 'client-section':'', 'client-row':''}
+                df.loc[len(df)] = new_row
+                print(new_row)
                 continue
             matched_sections.add(section)
             for row in mine[section]:
                 row_lower = row.lower()
                 if row_lower not in client[section]:
                     differences.append(f"section {section}, row {row} missing in client's manifest")
+
+                    new_row = {'sg-section':section, 'sg-row':row, 'client-section':'', 'client-row':''}
+                    df.loc[len(df)] = new_row
                     continue
 
                 missing_in_mine = set(client[section][row_lower]) - set(mine[section][row])
@@ -158,8 +168,15 @@ def compare_manifests(mine, client):
 
                 if missing_in_mine:
                     differences.append(f"In section {section}, row {row}, client's manifest has seats {', '.join(map(str, missing_in_mine))} that are not in SeatGeek Manifest.")
+
+                    new_row = {'sg-section':'', 'sg-row':'', 'client-section':section, 'client-row':row}
+                    df.loc[len(df)] = new_row
+
                 if missing_in_client:
                     differences.append(f"In section {section}, row {row}, SeatGeek Manifest has seats {', '.join(map(str, missing_in_client))} that are not in client's manifest.")
+
+                    new_row = {'sg-section':'', 'sg-row':row, 'client-section':section, 'client-row':''}
+                    df.loc[len(df)] = new_row
 
         unmatched_sections = set(client.keys()) - matched_sections
         for section in unmatched_sections:
@@ -173,8 +190,14 @@ def compare_manifests(mine, client):
         for section in missing_sections_in_mine:
             differences.append(f"section {section} missing in SeatGeek Manifest")
 
+            new_row = {'sg-section':'', 'sg-row':'', 'client-section':section, 'client-row':''}
+            df.loc[len(df)] = new_row
+
         for section in missing_sections_in_client:
             differences.append(f"section {section} missing in client's manifest")
+
+            new_row = {'sg-section':section, 'sg-row':'', 'client-section':'', 'client-row':''}
+            df.loc[len(df)] = new_row
 
         for section, rows in mine.items():
             if section in client:
@@ -184,10 +207,23 @@ def compare_manifests(mine, client):
                 for row in missing_rows_in_mine:
                     differences.append(f"In section {section}, row {row} missing in SeatGeek Manifest")
 
+                    new_row = {'sg-section':'', 'sg-row':'', 'client-section':section, 'client-row':row}
+                    df.loc[len(df)] = new_row
+
                 for row in missing_rows_in_client:
                     differences.append(f"In section {section}, row {row} missing in client's manifest")
 
-    return differences
+                    new_row = {'sg-section':section, 'sg-row':row, 'client-section':'', 'client-row':''}
+                    df.loc[len(df)] = new_row
+    print(df.to_html())
+
+    sg_df = df[['sg-section', 'sg-row']].loc[(df['sg-section'] != '') | (df['sg-row'] != '')].sort_values(by=['sg-section', 'sg-row']).reset_index(drop=True)
+
+    
+    client_df = df[['client-section', 'client-row']].loc[(df['client-section'] != '') | (df['client-row'] != '')].sort_values(by=['client-section', 'client-row']).reset_index(drop=True)
+
+
+    return (sg_df.to_html(), client_df.to_html())
 
 """if __name__ == "__main__":
     logging.info("Script started.")

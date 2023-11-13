@@ -33,10 +33,10 @@ def index():
             
             rules_text = request.form['rules']
             session["rules"] = rules_text
-            session["differences"] = perform_comparison(session.get
+            (session['differences_1'], session['differences_2']) = perform_comparison(session.get
             ('seatgeek_manifest_text', ''), session.get('client_manifest_text', ''), rules_text)
 
-    return render_template("index.html", differences=session.get("differences", []), rules=session["rules"])
+    return render_template("index.html", differences_1=session['differences_1'], differences_2 = session['differences_2'], rules=session["rules"])
 
 
 @app.route('/download/differences', methods=['GET'])
