@@ -19,6 +19,7 @@ Session(app)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+
     differences = []
 
     if "rules" not in session:
@@ -48,7 +49,7 @@ def index():
                     session['client_manifest_text'] = file.read().decode('utf-8')"""
         if 'csv1' in request.form and 'csv2' in request.form:
             session['client_manifest_text'] = request.form['csv2']
-            session['seatgeek_manfiest_text'] = request.form['csv1']
+            session['seatgeek_manifest_text'] = request.form['csv1']
 
             
             rules_text = request.form['rules']
@@ -63,6 +64,7 @@ def index():
 
 
     return render_template("index.html", differences=session.get("differences", []), rules=session["rules"])
+
 
 @app.route('/download/differences', methods=['GET'])
 def download_differences():
@@ -112,7 +114,7 @@ def load_rules_from_text(text):
             replace = replace.replace(" ", "-")
             rules[pattern] = replace
     return rules
-    
+
 
 if __name__ == "__main__":
     app.run(debug=True)
