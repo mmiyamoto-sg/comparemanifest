@@ -1,3 +1,6 @@
 hack/
 flask_session/
 compare_manifest.log
+myenv/
+__pycache__/
+.DS_Store
