@@ -44,6 +44,16 @@
         </div>
 
         <div class="mb-4">
+            <label for="columns">Columns to analyze (comma-separated):</label>
+            <br>
+            <input type="checkbox" id="rowLevel" name="rowLevel" value="rowLevel">
+            <label for="rowLevel">Row Level</label>
+            <input type="checkbox" id="seatLevel" name="seatLevel" value="seatLevel">
+            <label for="Seat Level">Seat Level</label>
+            <br>
+        </div>
+
+        <div class="mb-4">
             <label for="rules" class="block text-gray-700 font-bold mb-2">Rules:</label>
             <textarea id="rules" name="rules" rows="10" class="w-full px-3 py-2 text-gray-700 border rounded-xl focus:outline-none">{{ request.form["rules"] }}</textarea>
         </div>
@@ -85,6 +95,7 @@
         const input = document.querySelector('input[type="file"]');
         const files = input.files;
         if (files.length >= 2) {
+            
             readAndDisplayCSV(files[0], 'csv2');
             readAndDisplayCSV(files[1], 'csv1');
         }

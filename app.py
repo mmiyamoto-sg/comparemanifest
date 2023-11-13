@@ -26,27 +26,6 @@ def index():
         session["rules"] = ""
     
     if request.method == "POST":
-        """csv_contents1 = csv_contents2 = ''
-        if 'sgmanifest' in request.files:
-            csv_file1 = request.files['sgmanifest']
-
-            if csv_file1.filename != '':
-                csv_contents1 = csv_file1.read().decode('utf-8')
-        
-        if 'clientmanifest' in request.files:
-            csv_file2 = request.files['clientmanifest']
-
-            if csv_file2.filename != '':
-                csv_contents2 = csv_file2.read().decode('utf-8')"""
-        ##uploaded_files = request.files.getlist('manifests')
-        
-        # Make sure we have both manifests
-        """if len(uploaded_files) == 2:
-            for file in uploaded_files:
-                if file.filename == 'seatgeek_manifest.csv':
-                    session['seatgeek_manifest_text'] = file.read().decode('utf-8')
-                elif file.filename == 'client_manifest.csv':
-                    session['client_manifest_text'] = file.read().decode('utf-8')"""
         if 'csv1' in request.form and 'csv2' in request.form:
             session['client_manifest_text'] = request.form['csv2']
             session['seatgeek_manifest_text'] = request.form['csv1']
@@ -56,12 +35,6 @@ def index():
             session["rules"] = rules_text
             session["differences"] = perform_comparison(session.get
             ('seatgeek_manifest_text', ''), session.get('client_manifest_text', ''), rules_text)
-
-            #print(session['seatgeek_manifest_text'])
-            
-        # Try if statement where upload is 0. Must store csv from first action in variable or text area to be used over and over again within session because POST can't pre-populate input fields due to security
-        
-
 
     return render_template("index.html", differences=session.get("differences", []), rules=session["rules"])
 
