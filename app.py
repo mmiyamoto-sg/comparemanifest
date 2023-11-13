@@ -112,6 +112,7 @@ def load_rules_from_text(text):
             replace = replace.replace(" ", "-")
             rules[pattern] = replace
     return rules
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
