@@ -24,9 +24,12 @@ def index():
 
     if "rules" not in session:
         session["rules"] = ""
-    
+
+
     if request.method == "POST":
+        print("Hello2")
         if 'csv1' in request.form and 'csv2' in request.form:
+            print("Hello3")
             session['client_manifest_text'] = request.form['csv2']
             session['seatgeek_manifest_text'] = request.form['csv1']
 
@@ -36,6 +39,8 @@ def index():
             session['analysisLevel'] = analyze_seat_level
             (session['differences_1'], session['differences_2']) = perform_comparison(session.get('seatgeek_manifest_text', ''), 
                                                                                       session.get('client_manifest_text', ''), rules_text, analyze_seat_level)
+            print("DataFrame", d1, d2)
+            (session['differences_1'], session['differences_2']) = [d1, d2]
 
         return render_template("index.html", differences_1=session['differences_1'], differences_2 = session['differences_2'], rules=session["rules"])
     
@@ -57,6 +62,8 @@ def download_rules():
 
 def perform_comparison(seatgeek_text, client_text, rules_text, analyze_seat_level):
     # Save files temporarily for processing
+    print("sgt", seatgeek_text)
+    print("ct", client_text)
     with open("temp_seatgeek.csv", "w") as f:
         f.write(seatgeek_text)
     
