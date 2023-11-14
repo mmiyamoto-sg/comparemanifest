@@ -37,11 +37,15 @@ def index():
             session["rules"] = rules_text
             analyze_seat_level = True if request.form['analysisLevel'] == 'seatLevel' else False
             session['analysisLevel'] = analyze_seat_level
-            (session['differences_1'], session['differences_2']) = perform_comparison(session.get('seatgeek_manifest_text', ''), 
+            (diff_1, diff_2, count_1, count_2) = perform_comparison(session.get('seatgeek_manifest_text', ''), 
                                                                                       session.get('client_manifest_text', ''), rules_text, analyze_seat_level)
-        return render_template("index2.html", differences_1=session['differences_1'], differences_2 = session['differences_2'], rules=session["rules"])
+            session['differences_1'] = diff_1
+            session['differences_2'] = diff_2
+            count_1 = str(count_1)+' Potential Issues'
+            count_2 = str(count_2)+' Potential Issues'
+        return render_template("index2.html", differences_1=diff_1, differences_2 = diff_2, count_1=count_1, count_2=count_2, rules=session["rules"])
     
-    return render_template("index2.html", differences_1='', differences_2 = '', rules=session["rules"])
+    return render_template("index2.html", differences_1='', differences_2 = '', count_1='', count_2='', rules=session["rules"])
 
 
 @app.route('/download/differences', methods=['GET'])
