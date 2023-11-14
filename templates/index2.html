@@ -54270,6 +54270,8 @@
 
         .divTable {
             display: table;
+            table-layout:fixed;
+            width:90%;
         }
 
         .divHead {
@@ -54290,9 +54292,41 @@
             position: relative;
         }
 
-        .fifty-neg-y {
+        .fifty-negative-y {
             top: 25%;
             position: absolute;
+        }
+
+        .ten {
+            width: 10%;
+        }
+
+        .twenty {
+            width: 20%;
+        }
+
+        .thirty {
+            width: 30%;
+        }
+
+        .forty {
+            width: 40%;
+        }
+
+        .fifty {
+            width: 50%;
+        }
+
+        .sixty {
+            width: 60%;
+        }
+
+        .seventy {
+            width: 70%;
+        }
+
+        .eighty {
+            width: 80%;
         }
 
         .divCell-output {
@@ -54302,9 +54336,13 @@
             position: relative;
         }
 
+        .divCell-output table {
+            table-layout:fixed;
+            width: 100%;
+        }
+
         .divCell-output td {
             border: 1px solid rgb(185, 185, 185);
-            width:100%;
         }
     </style>
      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -54661,24 +54699,24 @@
                                         <form action="/" id="testform" name="test" method="POST" enctype="multipart/form-data">
                                             <div class="divTable">
                                                 <div class="divHead">
-                                                    <div class="divCell">
+                                                    <div class="divCell twenty">
                                                         Upload Manifests
                                                         <p>(Drag & Drop):</p>
                                                     </div>
-                                                    <div class="divCell">
+                                                    <div class="divCell twenty">
                                                         Manifest type:
                                                     </div>
-                                                    <div class="divCell">
+                                                    <div class="divCell eighty">
                                                         Rules: (RegEx)
                                                     </div>
                                                 </div>
                                                 <div class="divRow">
                                                     <div class="divCell">
-                                                        <input type="file" id="manifests" name="manifests" class="fifty-neg-y" multiple
+                                                        <input type="file" id="manifests" name="manifests" class="fifty-negative-y" multiple
                                                             class="w-full px-3 py-2 border rounded-xl focus:outline-none">
                                                     </div>
                                                     <div class="divCell">
-                                                        <div class="fifty-neg-y">
+                                                        <div class="fifty-negative-y">
                                                         <input type="radio" id="rowLevel" name="analysisLevel" value="rowLevel" checked="checked"/>
                                                         <label for="rowLevel">Row Level</label>
                                                         <input type="radio" id="seatLevel" name="analysisLevel" value="seatLevel"  />
@@ -54686,22 +54724,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="divCell">
-                                                        <textarea id="rules" name="rules" rows="5" cols="55">
+                                                        <textarea id="rules" name="rules" rows="5" cols="70">
                                                                                         {{ request.form["rules"] }}
                                                                                     </textarea>
                                                     </div>
                                                 </div>
                                                 <div class="divRow">
-                                                    <div class="divCell" hidden>
+                                                    <div class="divCell">
+                                                        <div hidden>
                                                         <label for="csv1">SG Manifest:</label>
                                                         <br>
                                                         <textarea id="csv1" name="csv1" rows="10" cols="50">{{ request.form["csv1"] }}</textarea>
                                                     </div>
-                                                    <div class="divCell" hidden>
+                                                    </div>
+                                                    <div class="divCell" >
+                                                        <div hidden>
                                                         <label for="csv2">SG Manifest:</label>
                                                         <br>
                                                         <textarea id="csv2" name="csv2" rows="10" cols="50">{{ request.form["csv2"] }}</textarea>
-                                                    </div>
+                                                    </div></div>
                                                     <div class="divCell">
                                                         <button type="submit"
                                                             class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-xl focus:outline-none">Run
@@ -54720,15 +54761,15 @@
                                     </div>
                                     </form>
                                     <br>
-                                    <div class="divTable" style="width:100%;">
+                                    <div class="divTable" style="width:90%;">
                                         <div class="divHead">
                                             <div class="divCell">
                                                 Missing from Client
-                                                <p>Remove from SG Map?</p>
+                                                <p>[Placeholder for counts]</p>
                                             </div>
                                             <div class="divCell">
                                                 Missing from SeatGeek
-                                                <p>Add to SG Map?</p>
+                                                <p>[Placeholder for counts]</p>
                                             </div>
                                         </div>
                                         <div class="divRow">

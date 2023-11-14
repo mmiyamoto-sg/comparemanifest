@@ -229,7 +229,7 @@ def compare_manifests(mine, client):
         sg_df = df[['sg-section', 'sg-row']].loc[(df['sg-section'] != '') | (df['sg-row'] != '')].sort_values(by=['sg-section', 'sg-row']).reset_index(drop=True)    
         client_df = df[['client-section', 'client-row']].loc[(df['client-section'] != '') | (df['client-row'] != '')].sort_values(by=['client-section', 'client-row']).reset_index(drop=True)
 
-    return (sg_df.to_html(), client_df.to_html())
+    return (sg_df.to_html(index=False), client_df.to_html(index=False))
 
 if __name__ == "__main__":
     logging.info("Script started.")
