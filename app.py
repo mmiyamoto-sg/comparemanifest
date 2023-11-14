@@ -39,9 +39,6 @@ def index():
             session['analysisLevel'] = analyze_seat_level
             (session['differences_1'], session['differences_2']) = perform_comparison(session.get('seatgeek_manifest_text', ''), 
                                                                                       session.get('client_manifest_text', ''), rules_text, analyze_seat_level)
-            print("DataFrame", d1, d2)
-            (session['differences_1'], session['differences_2']) = [d1, d2]
-
         return render_template("index.html", differences_1=session['differences_1'], differences_2 = session['differences_2'], rules=session["rules"])
     
     return render_template("index.html", differences_1='', differences_2 = '', rules=session["rules"])
