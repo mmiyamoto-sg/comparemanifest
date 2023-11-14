@@ -6,10 +6,14 @@
     <title>Manifest Comparison</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style type="text/css">
-        table, th, td {
-            border: 1px solid rgb(177, 177, 177);
-
+        body {
+            background:#F7F7F8 !important;
         }
+
+        table, th, td {
+            border: 1px solid rgb(177, 177, 177);}
+
+
     </style>
 
 </head>
@@ -32,21 +36,21 @@
         </div>
     -->
 
-        <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2">Upload Manifests (Drag & Drop):</label>
-            <input type="file" name="manifests" multiple class="w-full px-3 py-2 border rounded-xl focus:outline-none">
-        </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Upload Manifests (Drag & Drop):</label>
+        <input type="file" id="manifests" name="manifests" multiple class="w-full px-3 py-2 border rounded-xl focus:outline-none">
+    </div>
 
-        <!-- SEparated text are fields for testing -->
-        <div class="mb-4">
-            <label for="csv1">SG Manifest:</label>
-            <br>
-            <textarea id = "csv1" name="csv1" rows="10" cols="50">{{ request.form["csv1"] }}</textarea>
-            <br><br>
-            <label for="csv2">Client Manifest:</label>
-            <br>
-            <textarea id="csv2" name="csv2" rows="10" cols="50">{{ request.form["csv2"] }}</textarea>
-        </div>
+    <!-- SEparated text are fields for testing -->
+    <div class="mb-4" >
+        <label for="csv1" hidden>SG Manifest:</label>
+        <br>
+        <textarea id = "csv1" name="csv1" rows="10" cols="50" >{{ request.form["csv1"] }}</textarea>
+        <br><br>
+        <label for="csv2" hidden>Client Manifest:</label>
+        <br>
+        <textarea id="csv2" name="csv2" rows="10" cols="50" >{{ request.form["csv2"] }}</textarea>
+    </div>
 
         <div class="mb-4">
             <label for="columns">Columns to analyze (comma-separated):</label>
@@ -58,10 +62,10 @@
             <br>
         </div>
 
-        <div class="mb-4">
-            <label for="rules" class="block text-gray-700 font-bold mb-2">Rules:</label>
-            <textarea id="rules" name="rules" rows="10" class="w-full px-3 py-2 text-gray-700 border rounded-xl focus:outline-none">{{ request.form["rules"] }}</textarea>
-        </div>
+    <div class="mb-4">
+        <label for="rules" class="block text-gray-700 font-bold mb-2">Rules:</label>
+        <textarea id="rules" name="rules" rows="10" class="w-full px-3 py-2 text-gray-700 border rounded-xl focus:outline-none">{{ request.form["rules"] }}</textarea>
+    </div>
 
         <div class="mt-4 flex justify-center space-x-4">
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-xl focus:outline-none">Run Comparison</button>
@@ -130,7 +134,10 @@
     function readAndDisplayCSV(file, textareaId) {
         const reader = new FileReader();
         reader.onload = function (e) {
-            document.getElementById(textareaId).value = e.target.result;
+            const content = e.target.result;
+            const modifiedContent = content.replace(/ /g, '-');
+            document.getElementById(textareaId).value = modifiedContent;
+
         };
         reader.readAsText(file);
     }

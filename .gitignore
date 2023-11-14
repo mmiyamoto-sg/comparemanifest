@@ -4,3 +4,5 @@ compare_manifest.log
 myenv/
 __pycache__/
 .DS_Store
+temp_client.csv
+temp_seatgeek.csv
