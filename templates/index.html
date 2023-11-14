@@ -10,8 +10,38 @@
             background:#F7F7F8 !important;
         }
 
-        table, th, td {
-            border: 1px solid rgb(177, 177, 177);}
+        table {
+            border: 1px solid rgb(177, 177, 177);
+            background: white;
+            text-align:center;
+            width:100%;
+
+        }
+
+        tr {
+            text-align: center !important;
+
+        }
+
+        td, th {
+            border: 1px solid rgb(177, 177, 177);
+            font-weight:normal;
+            padding: 10px;
+        }
+
+        thead {
+            background: rgb(0, 78, 195);
+            border: 1px solid rgb(177, 177, 177);
+            color: white;
+            font-weight:normal;
+            text-align:center;
+        }
+
+        h1 {
+            font-size: 1.1em;
+            font-weight:bold;
+        }
+        
 
 
     </style>
@@ -87,19 +117,19 @@
         <div><p>{{ differences | safe }}</p></div>
         -->
 
-        <div style="width: 100%; display: table; margin:auto; width:50%; padding:10px;">
+        <div style="width: 100%; display: table; margin:auto; width:50%; padding:10px;" class="test">
             <div style="display: table-row;">
-                <div style="width:50%; display: table-cell;">
-                    Missing from client manifest
+                <div style="width:50%; display: table-cell;padding:30px;text-align:center;">
+                    <h1>Missing from client manifest</h1>
                     <p>Potentially remove from map</p>
                 </div>
-                <div style="width:50%; display: table-cell;">
-                    Missing from seatgeek manifest
+                <div style="display: table-cell;text-align:center;">
+                    <h1>Missing from seatgeek manifest</h1>
                     <p>Potentially add to map</p>
                 </div>
             </div>
             <div style="display: table-row;">
-                <div style="width:50%; display: table-cell;">{{ differences_1 | safe }}</div>
+                <div style="width:50%; display: table-cell;padding:30px">{{ differences_1 | safe }}</div>
                 <div style="display: table-cell;">{{ differences_2 | safe }}</div>
             </div>
         </div>
