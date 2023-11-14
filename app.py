@@ -30,11 +30,12 @@ def index():
             session['client_manifest_text'] = request.form['csv2']
             session['seatgeek_manifest_text'] = request.form['csv1']
 
-            
             rules_text = request.form['rules']
             session["rules"] = rules_text
-            (session['differences_1'], session['differences_2']) = perform_comparison(session.get
-            ('seatgeek_manifest_text', ''), session.get('client_manifest_text', ''), rules_text)
+            analyze_seat_level = True if request.form['analysisLevel'] == 'seatLevel' else False
+
+            (session['differences_1'], session['differences_2']) = perform_comparison(session.get('seatgeek_manifest_text', ''), 
+                                                                                      session.get('client_manifest_text', ''), rules_text, analyze_seat_level)
 
     return render_template("index.html", differences_1=session['differences_1'], differences_2 = session['differences_2'], rules=session["rules"])
 
@@ -52,7 +53,7 @@ def download_rules():
         f.write(session.get("rules", ""))
     return send_from_directory('.', 'rules.txt', as_attachment=True, download_name='rules.txt')
 
-def perform_comparison(seatgeek_text, client_text, rules_text):
+def perform_comparison(seatgeek_text, client_text, rules_text, analyze_seat_level):
     # Save files temporarily for processing
     with open("temp_seatgeek.csv", "w") as f:
         f.write(seatgeek_text)
@@ -70,8 +71,8 @@ def perform_comparison(seatgeek_text, client_text, rules_text):
             section_value = row.get('SECTION', row.get('section', '')).lower()
             seatgeek_manifest_sections.add(section_value)
         
-    seatgeek_manifest = load_csv('temp_seatgeek.csv', rules, seatgeek_manifest_sections)
-    client_manifest = load_csv('temp_client.csv', rules, seatgeek_manifest_sections)
+    seatgeek_manifest = load_csv('temp_seatgeek.csv', rules, seatgeek_manifest_sections, analyze_seat_level)
+    client_manifest = load_csv('temp_client.csv', rules, seatgeek_manifest_sections, analyze_seat_level)
 
     return compare_manifests(seatgeek_manifest, client_manifest)
 

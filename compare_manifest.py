@@ -2,6 +2,7 @@ import csv
 import re
 import logging
 import pandas as pd
+import numpy as np
 
 # Set up logging
 logging.basicConfig(filename='compare_manifest.log', level=logging.INFO, format='%(asctime)s - %(message)s')
@@ -91,7 +92,7 @@ def apply_rules(section, rules, all_sections):
 
     return section
 
-def load_csv(filename, rules, all_sections=None):
+def load_csv(filename, rules, all_sections=None, analyze_seat_level=True):
     data = {}
     
     with open(filename, 'r') as f:
@@ -105,16 +106,13 @@ def load_csv(filename, rules, all_sections=None):
         expected_headers = ['section', 'row']
         if 'seat' in headers:
             expected_headers.append('seat')
-        
-        if headers != expected_headers:
-            raise ValueError(f"Unexpected headers in {filename}: {headers}")
 
         # Iterate over the rows (excluding header)
         for row in rows[1:]:
-            row_data = dict(zip(headers, row))
+            row_data = dict(zip(headers, map(lambda x:x.lower(), row)))
             section = apply_rules(row_data['section'], rules, all_sections)
             
-            if 'seat' in headers:
+            if 'seat' in headers and analyze_seat_level:
                 if section not in data:
                     data[section] = {}
                 
@@ -135,9 +133,7 @@ def load_csv(filename, rules, all_sections=None):
 
 def compare_manifests(mine, client):
     differences = []
-    df = pd.DataFrame({'sg-section':[], 'sg-row':[], 'client-section':[], 'client-row':[]})
-
-    
+    df = pd.DataFrame({'sg-section':[], 'sg-row':[], 'sg-seats':[], 'client-section':[], 'client-row':[], 'client-seats':[]})
 
     # Check if comparison is seat-level or row-level
     is_seat_level = all(isinstance(val, dict) for val in mine.values())
@@ -149,9 +145,8 @@ def compare_manifests(mine, client):
         for section in mine:
             if section not in client:
                 differences.append(f"section {section} missing in client's manifest")
-                new_row = {'sg-section':section, 'sg-row':'', 'client-section':'', 'client-row':''}
+                new_row = {'client-section':section}
                 df.loc[len(df)] = new_row
-                print(new_row)
                 continue
             matched_sections.add(section)
             for row in mine[section]:
@@ -159,7 +154,7 @@ def compare_manifests(mine, client):
                 if row_lower not in client[section]:
                     differences.append(f"section {section}, row {row} missing in client's manifest")
 
-                    new_row = {'sg-section':section, 'sg-row':row, 'client-section':'', 'client-row':''}
+                    new_row = {'client-section':section, 'client-row':row}
                     df.loc[len(df)] = new_row
                     continue
 
@@ -169,18 +164,26 @@ def compare_manifests(mine, client):
                 if missing_in_mine:
                     differences.append(f"In section {section}, row {row}, client's manifest has seats {', '.join(map(str, missing_in_mine))} that are not in SeatGeek Manifest.")
 
-                    new_row = {'sg-section':'', 'sg-row':'', 'client-section':section, 'client-row':row}
+                    new_row = {'sg-section':section, 'sg-row':row, 'sg-seats':', '.join(map(str, missing_in_mine))}
                     df.loc[len(df)] = new_row
 
                 if missing_in_client:
                     differences.append(f"In section {section}, row {row}, SeatGeek Manifest has seats {', '.join(map(str, missing_in_client))} that are not in client's manifest.")
 
-                    new_row = {'sg-section':'', 'sg-row':row, 'client-section':section, 'client-row':''}
+                    new_row = {'client-section':section, 'client-row':row,'client-seats':', '.join(map(str, missing_in_client))}
                     df.loc[len(df)] = new_row
-
+            
+            for row in client[section]:
+                if row not in mine[section]:
+                    differences.append(f"In section {section}, row {row} missing in SeatGeek Manifest")
+                    new_row = {'sg-section':section, 'sg-row':row}
+                    df.loc[len(df)] = new_row
+                
         unmatched_sections = set(client.keys()) - matched_sections
         for section in unmatched_sections:
             differences.append(f"section {section} missing in SeatGeek Manifest")
+            new_row = {'sg-section':section}
+            df.loc[len(df)] = new_row
 
     else:
         # Row-level comparison logic
@@ -190,13 +193,13 @@ def compare_manifests(mine, client):
         for section in missing_sections_in_mine:
             differences.append(f"section {section} missing in SeatGeek Manifest")
 
-            new_row = {'sg-section':'', 'sg-row':'', 'client-section':section, 'client-row':''}
+            new_row = {'sg-section':section}
             df.loc[len(df)] = new_row
 
         for section in missing_sections_in_client:
             differences.append(f"section {section} missing in client's manifest")
 
-            new_row = {'sg-section':section, 'sg-row':'', 'client-section':'', 'client-row':''}
+            new_row = {'client-section':section}
             df.loc[len(df)] = new_row
 
         for section, rows in mine.items():
@@ -207,49 +210,26 @@ def compare_manifests(mine, client):
                 for row in missing_rows_in_mine:
                     differences.append(f"In section {section}, row {row} missing in SeatGeek Manifest")
 
-                    new_row = {'sg-section':'', 'sg-row':'', 'client-section':section, 'client-row':row}
+                    new_row = {'sg-section':section, 'sg-row':row}
                     df.loc[len(df)] = new_row
 
                 for row in missing_rows_in_client:
                     differences.append(f"In section {section}, row {row} missing in client's manifest")
 
-                    new_row = {'sg-section':section, 'sg-row':row, 'client-section':'', 'client-row':''}
+                    new_row = {'client-section':section, 'client-row':row}
                     df.loc[len(df)] = new_row
-    print(df.to_html())
-
-    sg_df = df[['sg-section', 'sg-row']].loc[(df['sg-section'] != '') | (df['sg-row'] != '')].sort_values(by=['sg-section', 'sg-row']).reset_index(drop=True)
-
     
-    client_df = df[['client-section', 'client-row']].loc[(df['client-section'] != '') | (df['client-row'] != '')].sort_values(by=['client-section', 'client-row']).reset_index(drop=True)
-
+    df = df.fillna('')
+    print(df)
+    sg_df = client_df = None
+    if is_seat_level:
+        sg_df = df[['sg-section', 'sg-row', 'sg-seats']].loc[(df['sg-section'] != '') | (df['sg-row'] != '') | (df['sg-seats'] != '')].sort_values(by=['sg-section', 'sg-row']).reset_index(drop=True)
+        client_df = df[['client-section', 'client-row', 'client-seats']].loc[(df['client-section'] != '') | (df['client-row'] != '') | (df['client-seats'] != '')].sort_values(by=['client-section', 'client-row']).reset_index(drop=True)
+    else:
+        sg_df = df[['sg-section', 'sg-row']].loc[(df['sg-section'] != '') | (df['sg-row'] != '')].sort_values(by=['sg-section', 'sg-row']).reset_index(drop=True)    
+        client_df = df[['client-section', 'client-row']].loc[(df['client-section'] != '') | (df['client-row'] != '')].sort_values(by=['client-section', 'client-row']).reset_index(drop=True)
 
     return (sg_df.to_html(), client_df.to_html())
-
-"""if __name__ == "__main__":
-    logging.info("Script started.")
-
-    rules = load_rules('rules.txt')
-    seatgeek_manifest_sections = set()
-    
-    with open('seatgeek_manifest.csv', 'r') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            # Making it case-insensitive
-            section_value = row.get('SECTION', row.get('section', '')).lower()
-            seatgeek_manifest_sections.add(section_value)
-            
-    seatgeek_manifest = load_csv('seatgeek_manifest.csv', rules, seatgeek_manifest_sections)
-    client_manifest = load_csv('client_manifest.csv', rules, seatgeek_manifest_sections)
-    
-    differences = compare_manifests(seatgeek_manifest, client_manifest)
-
-    with open('differences.csv', 'w') as f:
-        writer = csv.writer(f)
-        writer.writerow(["Difference"])
-        for diff in differences:
-            writer.writerow([diff])
-
-    logging.info("Script finished. Results written to 'differences.csv'")"""
 
 if __name__ == "__main__":
     logging.info("Script started.")
