@@ -33,7 +33,7 @@ def load_rules(filename):
     return rules
 
 def extract_three_digit_number(section):
-    matches = re.findall(r'\b\d{3}\b', section)
+    matches = re.findall(r'\w(\d{3})\w', section)
     return matches[0] if matches else None    
 
 def normalize_section_name(section):
