@@ -1,329 +1,265 @@
-section 124 missing in SeatGeek Manifest
-section stud missing in SeatGeek Manifest
-section 128 missing in SeatGeek Manifest
-section 122 missing in SeatGeek Manifest
-section floor-3 missing in SeatGeek Manifest
-section 123 missing in SeatGeek Manifest
-section 125 missing in SeatGeek Manifest
-section 126 missing in SeatGeek Manifest
-section floor missing in SeatGeek Manifest
-section floor-4 missing in SeatGeek Manifest
-section floor-2 missing in SeatGeek Manifest
-section 127 missing in SeatGeek Manifest
-section courtside missing in client's manifest
-In section 112, row wc missing in SeatGeek Manifest
-In section 203, row wc missing in SeatGeek Manifest
-In section 203, row n missing in client's manifest
-In section 203, row m missing in client's manifest
-In section 206, row wc missing in SeatGeek Manifest
-In section 206, row n missing in client's manifest
-In section 206, row m missing in client's manifest
-In section 210, row wc missing in SeatGeek Manifest
-In section 210, row n missing in client's manifest
-In section 210, row m missing in client's manifest
-In section 213, row wc missing in SeatGeek Manifest
-In section 213, row n missing in client's manifest
-In section 213, row m missing in client's manifest
-In section 217, row wc missing in SeatGeek Manifest
-In section 217, row n missing in client's manifest
-In section 217, row m missing in client's manifest
-In section 220, row wc missing in SeatGeek Manifest
-In section 220, row n missing in client's manifest
-In section 220, row m missing in client's manifest
-In section 224, row wc missing in SeatGeek Manifest
-In section 224, row n missing in client's manifest
-In section 224, row m missing in client's manifest
-In section 227, row wc missing in SeatGeek Manifest
-In section 227, row n missing in client's manifest
-In section 227, row m missing in client's manifest
-In section 301, row t missing in client's manifest
-In section 301, row u missing in client's manifest
-In section 301, row v missing in client's manifest
-In section 301, row o missing in client's manifest
-In section 301, row w missing in client's manifest
-In section 302, row t missing in client's manifest
-In section 302, row u missing in client's manifest
-In section 302, row c missing in client's manifest
-In section 302, row v missing in client's manifest
-In section 302, row b missing in client's manifest
-In section 302, row o missing in client's manifest
-In section 302, row w missing in client's manifest
-In section 302, row a missing in client's manifest
-In section 303, row t missing in client's manifest
-In section 303, row u missing in client's manifest
-In section 303, row v missing in client's manifest
-In section 303, row o missing in client's manifest
-In section 303, row w missing in client's manifest
-In section 304, row t missing in client's manifest
-In section 304, row u missing in client's manifest
-In section 304, row c missing in client's manifest
-In section 304, row v missing in client's manifest
-In section 304, row b missing in client's manifest
-In section 304, row o missing in client's manifest
-In section 304, row w missing in client's manifest
-In section 304, row a missing in client's manifest
-In section 305, row t missing in client's manifest
-In section 305, row u missing in client's manifest
-In section 305, row v missing in client's manifest
-In section 305, row o missing in client's manifest
-In section 305, row w missing in client's manifest
-In section 306, row t missing in client's manifest
-In section 306, row q missing in client's manifest
-In section 306, row u missing in client's manifest
-In section 306, row n missing in client's manifest
-In section 306, row v missing in client's manifest
-In section 306, row p missing in client's manifest
-In section 306, row r missing in client's manifest
-In section 306, row o missing in client's manifest
-In section 306, row w missing in client's manifest
-In section 306, row s missing in client's manifest
-In section 306, row a missing in client's manifest
-In section 307, row t missing in client's manifest
-In section 307, row u missing in client's manifest
-In section 307, row v missing in client's manifest
-In section 307, row o missing in client's manifest
-In section 307, row w missing in client's manifest
-In section 308, row t missing in client's manifest
-In section 308, row u missing in client's manifest
-In section 308, row c missing in client's manifest
-In section 308, row v missing in client's manifest
-In section 308, row b missing in client's manifest
-In section 308, row o missing in client's manifest
-In section 308, row w missing in client's manifest
-In section 308, row a missing in client's manifest
-In section 309, row t missing in client's manifest
-In section 309, row u missing in client's manifest
-In section 309, row v missing in client's manifest
-In section 309, row o missing in client's manifest
-In section 309, row w missing in client's manifest
-In section 310, row t missing in client's manifest
-In section 310, row u missing in client's manifest
-In section 310, row c missing in client's manifest
-In section 310, row v missing in client's manifest
-In section 310, row b missing in client's manifest
-In section 310, row o missing in client's manifest
-In section 310, row w missing in client's manifest
-In section 310, row a missing in client's manifest
-In section 311, row t missing in client's manifest
-In section 311, row u missing in client's manifest
-In section 311, row v missing in client's manifest
-In section 311, row o missing in client's manifest
-In section 311, row w missing in client's manifest
-In section 312, row t missing in client's manifest
-In section 312, row u missing in client's manifest
-In section 312, row c missing in client's manifest
-In section 312, row v missing in client's manifest
-In section 312, row b missing in client's manifest
-In section 312, row o missing in client's manifest
-In section 312, row w missing in client's manifest
-In section 312, row a missing in client's manifest
-In section 313, row t missing in client's manifest
-In section 313, row u missing in client's manifest
-In section 313, row v missing in client's manifest
-In section 313, row o missing in client's manifest
-In section 313, row w missing in client's manifest
-In section 314, row t missing in client's manifest
-In section 314, row u missing in client's manifest
-In section 314, row c missing in client's manifest
-In section 314, row v missing in client's manifest
-In section 314, row b missing in client's manifest
-In section 314, row o missing in client's manifest
-In section 314, row w missing in client's manifest
-In section 314, row a missing in client's manifest
-In section 315, row t missing in client's manifest
-In section 315, row u missing in client's manifest
-In section 315, row v missing in client's manifest
-In section 315, row o missing in client's manifest
-In section 315, row w missing in client's manifest
-In section 316, row t missing in client's manifest
-In section 316, row u missing in client's manifest
-In section 316, row c missing in client's manifest
-In section 316, row v missing in client's manifest
-In section 316, row b missing in client's manifest
-In section 316, row o missing in client's manifest
-In section 316, row w missing in client's manifest
-In section 316, row a missing in client's manifest
-In section 317, row t missing in client's manifest
-In section 317, row u missing in client's manifest
-In section 317, row v missing in client's manifest
-In section 317, row o missing in client's manifest
-In section 317, row w missing in client's manifest
-In section 318, row t missing in client's manifest
-In section 318, row u missing in client's manifest
-In section 318, row c missing in client's manifest
-In section 318, row v missing in client's manifest
-In section 318, row b missing in client's manifest
-In section 318, row o missing in client's manifest
-In section 318, row w missing in client's manifest
-In section 318, row a missing in client's manifest
-In section 319, row t missing in client's manifest
-In section 319, row u missing in client's manifest
-In section 319, row v missing in client's manifest
-In section 319, row o missing in client's manifest
-In section 319, row w missing in client's manifest
-In section 320, row t missing in client's manifest
-In section 320, row u missing in client's manifest
-In section 320, row c missing in client's manifest
-In section 320, row v missing in client's manifest
-In section 320, row b missing in client's manifest
-In section 320, row o missing in client's manifest
-In section 320, row w missing in client's manifest
-In section 320, row a missing in client's manifest
-In section 321, row t missing in client's manifest
-In section 321, row u missing in client's manifest
-In section 321, row v missing in client's manifest
-In section 321, row o missing in client's manifest
-In section 321, row w missing in client's manifest
-In section 322, row t missing in client's manifest
-In section 322, row u missing in client's manifest
-In section 322, row c missing in client's manifest
-In section 322, row v missing in client's manifest
-In section 322, row b missing in client's manifest
-In section 322, row o missing in client's manifest
-In section 322, row w missing in client's manifest
-In section 322, row a missing in client's manifest
-In section 323, row t missing in client's manifest
-In section 323, row u missing in client's manifest
-In section 323, row v missing in client's manifest
-In section 323, row o missing in client's manifest
-In section 323, row w missing in client's manifest
-In section 324, row t missing in client's manifest
-In section 324, row u missing in client's manifest
-In section 324, row c missing in client's manifest
-In section 324, row v missing in client's manifest
-In section 324, row b missing in client's manifest
-In section 324, row o missing in client's manifest
-In section 324, row w missing in client's manifest
-In section 324, row a missing in client's manifest
-In section 325, row t missing in client's manifest
-In section 325, row u missing in client's manifest
-In section 325, row v missing in client's manifest
-In section 325, row o missing in client's manifest
-In section 325, row w missing in client's manifest
-In section 326, row t missing in client's manifest
-In section 326, row u missing in client's manifest
-In section 326, row c missing in client's manifest
-In section 326, row v missing in client's manifest
-In section 326, row b missing in client's manifest
-In section 326, row o missing in client's manifest
-In section 326, row w missing in client's manifest
-In section 326, row a missing in client's manifest
-In section 327, row t missing in client's manifest
-In section 327, row u missing in client's manifest
-In section 327, row v missing in client's manifest
-In section 327, row o missing in client's manifest
-In section 327, row w missing in client's manifest
-In section 328, row t missing in client's manifest
-In section 328, row q missing in client's manifest
-In section 328, row u missing in client's manifest
-In section 328, row v missing in client's manifest
-In section 328, row p missing in client's manifest
-In section 328, row r missing in client's manifest
-In section 328, row o missing in client's manifest
-In section 328, row w missing in client's manifest
-In section 328, row s missing in client's manifest
-In section 328, row a missing in client's manifest
-In section 329, row t missing in client's manifest
-In section 329, row u missing in client's manifest
-In section 329, row v missing in client's manifest
-In section 329, row o missing in client's manifest
-In section 329, row w missing in client's manifest
-In section 330, row t missing in client's manifest
-In section 330, row u missing in client's manifest
-In section 330, row c missing in client's manifest
-In section 330, row v missing in client's manifest
-In section 330, row b missing in client's manifest
-In section 330, row o missing in client's manifest
-In section 330, row w missing in client's manifest
-In section 330, row a missing in client's manifest
-In section 331, row t missing in client's manifest
-In section 331, row u missing in client's manifest
-In section 331, row v missing in client's manifest
-In section 331, row o missing in client's manifest
-In section 331, row w missing in client's manifest
-In section 332, row t missing in client's manifest
-In section 332, row u missing in client's manifest
-In section 332, row c missing in client's manifest
-In section 332, row v missing in client's manifest
-In section 332, row b missing in client's manifest
-In section 332, row o missing in client's manifest
-In section 332, row w missing in client's manifest
-In section 332, row a missing in client's manifest
-In section 333, row t missing in client's manifest
-In section 333, row u missing in client's manifest
-In section 333, row v missing in client's manifest
-In section 333, row o missing in client's manifest
-In section 333, row w missing in client's manifest
-In section 334, row t missing in client's manifest
-In section 334, row u missing in client's manifest
-In section 334, row c missing in client's manifest
-In section 334, row v missing in client's manifest
-In section 334, row b missing in client's manifest
-In section 334, row o missing in client's manifest
-In section 334, row w missing in client's manifest
-In section 334, row a missing in client's manifest
-In section 335, row t missing in client's manifest
-In section 335, row u missing in client's manifest
-In section 335, row v missing in client's manifest
-In section 335, row o missing in client's manifest
-In section 335, row w missing in client's manifest
-In section 336, row t missing in client's manifest
-In section 336, row u missing in client's manifest
-In section 336, row c missing in client's manifest
-In section 336, row v missing in client's manifest
-In section 336, row b missing in client's manifest
-In section 336, row o missing in client's manifest
-In section 336, row w missing in client's manifest
-In section 336, row a missing in client's manifest
-In section 337, row t missing in client's manifest
-In section 337, row u missing in client's manifest
-In section 337, row v missing in client's manifest
-In section 337, row o missing in client's manifest
-In section 337, row w missing in client's manifest
-In section 338, row t missing in client's manifest
-In section 338, row u missing in client's manifest
-In section 338, row c missing in client's manifest
-In section 338, row v missing in client's manifest
-In section 338, row b missing in client's manifest
-In section 338, row o missing in client's manifest
-In section 338, row w missing in client's manifest
-In section 338, row a missing in client's manifest
-In section 339, row t missing in client's manifest
-In section 339, row u missing in client's manifest
-In section 339, row v missing in client's manifest
-In section 339, row o missing in client's manifest
-In section 339, row w missing in client's manifest
-In section 340, row t missing in client's manifest
-In section 340, row u missing in client's manifest
-In section 340, row c missing in client's manifest
-In section 340, row v missing in client's manifest
-In section 340, row b missing in client's manifest
-In section 340, row o missing in client's manifest
-In section 340, row w missing in client's manifest
-In section 340, row a missing in client's manifest
-In section 341, row t missing in client's manifest
-In section 341, row u missing in client's manifest
-In section 341, row v missing in client's manifest
-In section 341, row o missing in client's manifest
-In section 341, row w missing in client's manifest
-In section 342, row t missing in client's manifest
-In section 342, row u missing in client's manifest
-In section 342, row c missing in client's manifest
-In section 342, row v missing in client's manifest
-In section 342, row b missing in client's manifest
-In section 342, row o missing in client's manifest
-In section 342, row w missing in client's manifest
-In section 342, row a missing in client's manifest
-In section 343, row t missing in client's manifest
-In section 343, row u missing in client's manifest
-In section 343, row v missing in client's manifest
-In section 343, row o missing in client's manifest
-In section 343, row w missing in client's manifest
-In section 344, row t missing in client's manifest
-In section 344, row u missing in client's manifest
-In section 344, row c missing in client's manifest
-In section 344, row v missing in client's manifest
-In section 344, row b missing in client's manifest
-In section 344, row o missing in client's manifest
-In section 344, row w missing in client's manifest
-In section 344, row a missing in client's manifest
+<
+t
+a
+b
+l
+e
+ 
+b
+o
+r
+d
+e
+r
+=
+"
+1
+"
+ 
+c
+l
+a
+s
+s
+=
+"
+d
+a
+t
+a
+f
+r
+a
+m
+e
+"
+>
+
+
+ 
+ 
+<
+t
+h
+e
+a
+d
+>
+
+
+ 
+ 
+ 
+ 
+<
+t
+r
+ 
+s
+t
+y
+l
+e
+=
+"
+t
+e
+x
+t
+-
+a
+l
+i
+g
+n
+:
+ 
+r
+i
+g
+h
+t
+;
+"
+>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+<
+t
+h
+>
+<
+/
+t
+h
+>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+<
+t
+h
+>
+s
+g
+-
+s
+e
+c
+t
+i
+o
+n
+<
+/
+t
+h
+>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+<
+t
+h
+>
+s
+g
+-
+r
+o
+w
+<
+/
+t
+h
+>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+<
+t
+h
+>
+c
+l
+i
+e
+n
+t
+-
+s
+e
+c
+t
+i
+o
+n
+<
+/
+t
+h
+>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+<
+t
+h
+>
+c
+l
+i
+e
+n
+t
+-
+r
+o
+w
+<
+/
+t
+h
+>
+
+
+ 
+ 
+ 
+ 
+<
+/
+t
+r
+>
+
+
+ 
+ 
+<
+/
+t
+h
+e
+a
+d
+>
+
+
+ 
+ 
+<
+t
+b
+o
+d
+y
+>
+
+
+ 
+ 
+<
+/
+t
+b
+o
+d
+y
+>
+
+
+<
+/
+t
+a
+b
+l
+e
+>
