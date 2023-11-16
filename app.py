@@ -42,9 +42,9 @@ def index():
             session['differences'] = diff_csv
             count_1 = str(count_1)+' Potential Issues'
             count_2 = str(count_2)+' Potential Issues'
-        return render_template("index2.html", differences_1=diff_1, differences_2 = diff_2, count_1=count_1, count_2=count_2, rules=session["rules"])
+        return render_template("index3.html", differences_1=diff_1, differences_2 = diff_2, count_1=count_1, count_2=count_2, rules=session["rules"])
     
-    return render_template("index2.html", differences_1='', differences_2 = '', count_1='', count_2='', rules=session["rules"])
+    return render_template("index3.html", differences_1='', differences_2 = '', count_1='', count_2='', rules=session["rules"])
 
 
 @app.route('/download/differences', methods=['GET'])

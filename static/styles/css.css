@@ -54268,7 +54268,7 @@ th {
 
 .divCell {
     display: table-cell;
-    border: 1px solid rgb(185, 185, 185);
+    border: 0.5px solid rgb(185, 185, 185);
     padding: 3px;
     position: relative;
 }
@@ -54312,7 +54312,7 @@ th {
 
 .divCell-output {
     display: table-cell;
-    border: 1px solid rgb(185, 185, 185);
+    border: 0.5px solid rgb(185, 185, 185);
     padding: 3px;
     position: relative;
 }
@@ -54324,9 +54324,9 @@ th {
 
 .divCell-output th {
     background-color: rgb(221, 220, 219);
-    border: 1px solid rgb(185, 185, 185);
+    border: 0.5px solid rgb(185, 185, 185);
     text-align: left !important;
-    border-bottom: 1px solid rgb(185, 185, 185) !important;
+    border-bottom: 0.5px solid rgb(185, 185, 185) !important;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 2px;
@@ -54360,4 +54360,10 @@ th {
 textarea {
     box-sizing: border-box;
     width:100%;
+}
+
+#tool {
+    font-size: 3em;
+    font-family: 'Arial-Black';
+    padding-top:30px;
 }
