@@ -1,16 +1,20 @@
-from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
+from flask import Flask, render_template, request, session, send_from_directory
 from flask_session import Session
 from compare_manifest import (
-    extract_three_digit_number,
-    normalize_section_name,
-    apply_rules,
     load_csv,
     compare_manifests
 )
 import csv
 import os
-import pandas as pd
-from io import StringIO
+from sys import platform
+from enum import Enum
+
+class OS(Enum):
+    windows = 1
+    darwin =2 
+
+os_name = OS.windows if platform.lower().startswith('win') else OS.darwin
+
 
 app = Flask(__name__)
 app.config["SESSION_TYPE"] = "filesystem"
@@ -27,9 +31,7 @@ def index():
 
 
     if request.method == "POST":
-        print("Hello2")
         if 'csv1' in request.form and 'csv2' in request.form:
-            print("Hello3")
             session['client_manifest_text'] = request.form['csv2']
             session['seatgeek_manifest_text'] = request.form['csv1']
 
@@ -50,7 +52,14 @@ def index():
 @app.route('/download/differences', methods=['GET'])
 def download_differences():
     with open("differences.csv", "w") as f:
-        f.write(session.get("differences", []) + "\n")
+        differences = session.get("differences", '')
+        for diff in differences.split('\n'):
+            if not diff or len(diff.strip()) < 2:
+                continue
+            if os_name == OS.windows:
+                f.write(diff)
+            else:
+                f.write(diff + "\n")
     return send_from_directory('.', 'differences.csv', as_attachment=True, download_name='differences.csv')
 
 @app.route('/download/rules')
@@ -61,8 +70,6 @@ def download_rules():
 
 def perform_comparison(seatgeek_text, client_text, rules_text, analyze_seat_level):
     # Save files temporarily for processing
-    print("sgt", seatgeek_text)
-    print("ct", client_text)
     with open("temp_seatgeek.csv", "w") as f:
         f.write(seatgeek_text)
     

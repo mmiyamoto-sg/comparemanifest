@@ -101,7 +101,7 @@ def load_csv(filename, rules, all_sections=None, analyze_seat_level=True):
 
         # Extracting header from the first row and normalizing to lowercase
         headers = [header.lower() for header in rows[0]]
-        
+        print("Headers: ", headers)
         # Check if headers are as expected
         expected_headers = ['section', 'row']
         if 'seat' in headers:
